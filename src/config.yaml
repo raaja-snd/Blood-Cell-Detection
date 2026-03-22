@@ -1,0 +1,39 @@
+
+#Model
+
+model: yolov8
+
+#Dataset
+dataset_directory: bccd
+
+#MlFlow
+mlflow:
+  yolo:
+    experiment_name: bcd-yolo
+    tracking_uri: src/training/runs/yolo
+
+training:
+  lr0: 0.01
+  weight_decay: 0.0005
+  epochs: 100
+  batch: 16
+  patience: 30
+  warmup_epochs: 3
+  imgsz: 640
+  cls: 1.0
+  degrees: 180
+  fliplr: 0.5
+  flipud: 0.5
+  hsv_v: 0.4
+  hsv_s: 0.4
+  mosaic: 1.0
+  data: data/bccd/data.yaml
+
+
+model:
+  kind: yolov8n.pt
+  name: yolov8
+  model_directory: model/yolo
+  
+
+
