@@ -4,8 +4,10 @@ FROM python:3.12-slim
 # 2. Install system dependencies for OpenCV & YOLO
 # 'headless' environments need these libraries to process images
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
+    libsm6 \
+    libxext6 \
     && rm -rf /var/lib/apt/lists/*
 
 # 3. Set the working directory inside the container
