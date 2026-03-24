@@ -1,0 +1,11 @@
+streamlit
+ultralytics
+python-dotenv
+mlflow
+docker
+pillow
+PyYAML
+roboflow
+opencv-python-headless
+torch
+torchvision

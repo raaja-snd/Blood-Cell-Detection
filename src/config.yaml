@@ -11,6 +11,9 @@ mlflow:
   yolo:
     experiment_name: bcd-yolo
     tracking_uri: src/training/runs/yolo
+  yolo-test:
+    experiment_name: bcd-yolo-test
+    tracking_uri: src/testing/runs/yolo
 
 training:
   lr0: 0.01
@@ -28,6 +31,12 @@ training:
   hsv_s: 0.4
   mosaic: 1.0
   data: data/bccd/data.yaml
+
+test:
+  parent: src/testing/results
+  parameters: 
+    iou: 0.3
+    conf: 0.4
 
 
 model:

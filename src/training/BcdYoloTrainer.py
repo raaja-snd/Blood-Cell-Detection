@@ -21,6 +21,14 @@ class BcdYoloTrainer(BaseTrainer):
         logger.info(f'Initialized {name}')
     
     def setup(self,config_overrides = {}):
+        """
+        Setup the Yolo train model. The model is trained using predifined train configuration. 
+        The configuration is provided in the config.yaml file in the src/ directory. To 
+        override some of the configuation, use the config_overrides argument.
+
+        Args:
+            config_overrides(dict): The parameters to override for training.
+        """
         super().setup()
         self.training_config = {**self.training_config,**config_overrides}
         
@@ -33,6 +41,7 @@ class BcdYoloTrainer(BaseTrainer):
 
         self.model = YOLO(model=self.model_config['kind'],task='detect')
 
+        #MLflow Tracking uri
         self.tracking_uri = self.parent_path/f'{self.mlflow_config['yolo']['tracking_uri']}'
         if not self.tracking_uri.exists():
             self.tracking_uri.mkdir(parents=True,exist_ok=True)
@@ -40,6 +49,10 @@ class BcdYoloTrainer(BaseTrainer):
         logger.info(f'{self.name} setup complete')
     
     def run(self):
+        """
+        Run the YOLO trainer. Each run tracks the parameters and metrices using the MlFLow. The trained best model
+        is saved in mode/yolo directory.
+        """
         super().run()
         logger.info('Starting trainer and setting up experimental tracking')
         mlflow.set_tracking_uri(self.tracking_uri.as_uri())

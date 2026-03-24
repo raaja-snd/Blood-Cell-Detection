@@ -3,3 +3,7 @@
 /runs/
 /logs/
 /.vscode/
+/src/training/runs/
+/src/testing/runs/
+/src/testing/results*/
+/data/
