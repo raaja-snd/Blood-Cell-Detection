@@ -44,5 +44,6 @@ model:
   name: yolov8
   model_directory: model/yolo
   
+  
 
 

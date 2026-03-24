@@ -16,7 +16,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Copy the entire project structure
-# This ensures src/ui/app.py can find ../config.yaml
 COPY . .
 
 # 6. Expose the port Streamlit uses
